@@ -2,7 +2,7 @@ stages:
 - name: Build
   steps:
   - runScriptConfig:
-      image: 192.168.56.108/library/golang:1.11
+      image: golang:1.11
       shellScript: |-
         mkdir -p /go/src/github.com/rancher
         ln -s `pwd` /go/src/github.com/rancher/pipeline-example-go
@@ -14,13 +14,13 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: pipeline/example-helloserver:${CICD_EXECUTION_SEQUENCE}
+      tag: yr-2024/example-helloserver:${CICD_EXECUTION_SEQUENCE}
       pushRemote: true
-      registry: 192.168.56.108
+      registry: registry.cn-guangzhou.aliyuncs.com
     env:
       PLUGIN_INSECURE: "true"
-      PLUGIN_USERNAME: "admin"
-      PLUGIN_PASSWORD: "Harbor12345"
+      PLUGIN_USERNAME: "727663225@qq.com"
+      PLUGIN_PASSWORD: "yunrong-2024"
 - name: Deploy
   steps:
   - applyYamlConfig:
